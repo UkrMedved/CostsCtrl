@@ -155,15 +155,13 @@
          
         // создание модального окна на редактирование категории расхода
         $scope.editExpenditureCategory = function ($index) {
-          console.log($index);
-          console.log(storageFactory.ExpenditureCategory[$index])
           var modalEditExpenditureCategory = $uibModal.open({
               templateUrl: 'app/modals/modalEditExpenditureCategory/template.html' ,
               controller: 'EditExpenditureCategory' ,
               size: 'lg',
               resolve: {
                 correctCategory: function () {
-                  return $scope.storageFactory.ExpenditureCategory[$index];
+                  return storageFactory.ExpenditureCategory[$index];
                 }
               },
           });

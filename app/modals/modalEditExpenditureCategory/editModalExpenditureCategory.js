@@ -1,14 +1,16 @@
-app.controller('EditExpenditureCategory', ['$scope', '$uibModalInstance','storageFactory', function($scope, $uibModalInstance , storageFactory, correctCategory) {
-			
+app.controller('EditExpenditureCategory', ['$scope', '$uibModalInstance','correctCategory','storageFactory', function($scope, $uibModalInstance , correctCategory, storageFactory) {
+      
     $scope.storageFactory = storageFactory;
-    console.log(correctCategory); 
+    console.log('correctCategory :',correctCategory); 
+    
     $scope.cancel = function() {
 		$uibModalInstance.close();
 
 	};
 
 	$scope.ok = function () {
-    console.log($scope.storageFactory.ExpenditureCategory[$index]);
+    console.log(correctCategory);
+    $uibModalInstance.close();
     	
 	};
 
