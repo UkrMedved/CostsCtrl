@@ -15,7 +15,7 @@ app.controller('AddExpenditureCategory', ['$scope', '$uibModalInstance','storage
 		
 	};
 	$scope.today = function() {
-        $scope.date = new Date();
+        newExpenditureCategoryModel.datePayment = new Date();
         
            };
         $scope.today();
@@ -29,7 +29,7 @@ app.controller('AddExpenditureCategory', ['$scope', '$uibModalInstance','storage
         };
 
         $scope.setDate = function(year, month, day) {
-        $scope.date = new Date(year, month, day);
+        newExpenditureCategoryModel.datePayment = new Date(year, month, day);
         };
    
         $scope.popup = {

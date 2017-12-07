@@ -1,7 +1,8 @@
 app.controller('EditExpenditureCategory', ['$scope', '$uibModalInstance','correctCategory','storageFactory', function($scope, $uibModalInstance , correctCategory, storageFactory) {
-      
+     
     $scope.storageFactory = storageFactory;
-    console.log('correctCategory :',correctCategory); 
+    $scope.correctCategory = correctCategory;
+     
     
     $scope.cancel = function() {
 		$uibModalInstance.close();
@@ -9,8 +10,8 @@ app.controller('EditExpenditureCategory', ['$scope', '$uibModalInstance','correc
 	};
 
 	$scope.ok = function () {
-    console.log(correctCategory);
-    $uibModalInstance.close();
+    
+    $uibModalInstance.close(correctCategory);
     	
 	};
 

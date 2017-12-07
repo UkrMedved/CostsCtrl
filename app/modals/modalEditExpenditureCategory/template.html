@@ -21,10 +21,10 @@
             <div class="col-sm-8">
                 <div class="radio">
                     <label ng-click="modalCtrl.seeXtra = true">
-                        <input  type="radio" value="true"> Да
+                        <input ng-model="correctCategory.regularPayment"  type="radio" value="true"> Да
                     </label>
                     <label ng-click="modalCtrl.seeXtra = false">
-                        <input  type="radio" value='false' checked> Нет
+                        <input ng-model="correctCategory.regularPayment"  type="radio" value='false' checked> Нет
                     </label>
                 </div>
             </div>
@@ -33,7 +33,7 @@
         <div class="form-group" ng-if='modalCtrl.seeXtra'>
             <label for="sumOfPay" class="col-sm-4 control-label">Сумма платежа</label>
             <div class="col-sm-8">
-                <input type="number" class="form-control" id="sumOfPay" placeholder="Сумма платежа">
+                <input ng-model="correctCategory.sumPayment" type="number" class="form-control" id="sumOfPay" placeholder="Сумма платежа">
             </div>
         </div>
         
@@ -41,7 +41,7 @@
             <label  class="col-sm-4 control-label">Частота пополнения</label>
             <div class="col-sm-8">
                 <select class="form-control">
-                    <option disabled selected>Частота</option>
+                    <option ng-model="correctCategory.refillRate" disabled selected>Частота</option>
                 </select>
             </div>
         </div>
@@ -54,7 +54,7 @@
                     <input type="text" 
                             class="form-control"
                             uib-datepicker-popup="yyyy-MM-dd"
-                            ng-model='date'is-open="popup.opened" 
+                            ng-model="correctCategory.datePayment" is-open="popup.opened" 
                             datepicker-options="dateOptions"
                             ng-required="true"
                             show-button-bar="false"  />
@@ -70,7 +70,7 @@
             <div class="col-sm-8">
                 <select class="form-control"  >
                     <option disabled selected>Источник</option>
-                    <option>Без категории</option>
+                    <option ng-model="correctCategory.income" >Без категории</option>
                     
                 </select>
             </div>

@@ -1,6 +1,7 @@
-app.controller('editTemplateCtrl', function($scope, $uibModalInstance, storageFactory) {
-					
-
+app.controller('editTemplateCtrl', function($scope, $uibModalInstance, storageFactory,correctTemplate) {
+	console.log(correctTemplate);
+	$scope.storageFactory = storageFactory;
+	$scope.correctTemplate = correctTemplate;
     
 
     $scope.cancel = function() {
@@ -9,7 +10,8 @@ app.controller('editTemplateCtrl', function($scope, $uibModalInstance, storageFa
 	};
 
 	$scope.ok = function() {
-		$uibModalInstance.close();
+
+		$uibModalInstance.close(correctTemplate);
 		
 	};
 	

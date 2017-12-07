@@ -161,21 +161,31 @@
               size: 'lg',
               resolve: {
                 correctCategory: function () {
-                  return storageFactory.ExpenditureCategory[$index];
+                  return $scope.storageFactory.ExpenditureCategory[$index];
                 }
               },
           });
             modalEditExpenditureCategory.result.then(function(result){
-
+              
+              $scope.storageFactory.ExpenditureCategory[$index] = result;
             });
         };
 
-        $scope.editTemplate = function () {
+        $scope.editTemplate = function ($index) {
+          console.log($scope.storageFactory.templateCosts[$index]);
           var modalEditTemplate = $uibModal.open ({
             templateUrl: 'app/modals/modalEditTemplate/template.html',
             controller: 'editTemplateCtrl',
-            size: 'lg'
+            size: 'lg',
+            resolve: {
+              correctTemplate : function () {
+                return $scope.storageFactory.templateCosts[$index];
+              }
+            },
           }); 
+          modalEditTemplate.result.then(function(result){
+            $scope.storageFactory.templateCosts[$index] = result;
+          });
         };
 
 

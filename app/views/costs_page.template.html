@@ -88,7 +88,7 @@
             <li class="list-group-item" ng-repeat='item in storageFactory.templateCosts'>
                 <span ng-click="addCostsTemplate($index)" class="count-title">{{item.title}}</span>
                 <div class="btn-group pull-right">
-                    <button type="button" class="btn btn-primary btn-xs" title="Редактировать" ng-click="editTemplate()"><span class="glyphicon glyphicon-pencil"></span></button>
+                    <button type="button" class="btn btn-primary btn-xs" title="Редактировать" ng-click="editTemplate($index)"><span class="glyphicon glyphicon-pencil"></span></button>
                     <button type="button" class="btn btn-danger btn-xs" title="Удалить" 
         ng-click="deleteTemplate($index)"><span class="glyphicon glyphicon-remove"></span></button>
                 </div>
