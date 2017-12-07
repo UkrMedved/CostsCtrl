@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='application'>
+<head>
+    <meta charset="UTF-8">
+    <title>Angular Project</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-route/angular-route.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+    <script src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    
+</head>
+    <body>
+        <div class="container">
+            <div class="page-header">
+                <h1>Costs</h1>
+            </div>
+        </div>
+        <div class="container modal-target" ng-controller='CostsController'>
+            <ng-include src="'app/views/costs_page.template.html'"></ng-include>
+
+        </div>        
+        
+        <script src="app/app.js"></script>
+        <script src="app/app.config.js"></script>
+        <script src="app/factories/storageFactory.js"></script>
+        <script src="app/controllers/modalController.js"></script>
+        <script src="app/controllers/costsController.js"></script>
+        <script src="app/modals/modalDelete/modalController.js"></script>
+        <script src="app/modals/modaExpenditureCategory/addModalExpenditureCategory.js"></script> 
+        <script src="app/modals/modalEditExpenditureCategory/editModalExpenditureCategory.js"></script> 
+        <script src="app/modals/modalDeleteExpenditureCategory/modalDeleteCatController.js"></script>         
+        <script src="app/modals/modalAddTemplate/addTemplateCtrl.js"></script> 
+        <script src="app/modals/modalDeleteTemplate/modalController.js"></script>
+        <script src="app/modals/modalEditTemplate/editTemplateCtrl.js"></script>
+    </body>
+</html>

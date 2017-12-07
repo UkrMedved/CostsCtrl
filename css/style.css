@@ -1,0 +1,18 @@
+.container,
+.row {
+    margin-bottom: 20px;
+}
+
+#costs-form div { /*слипание блоков инпута*/
+    padding: 0;
+}
+
+.panel-title {
+    display: inline-block;
+}
+
+.category-title,
+.count-title
+{
+    cursor: pointer;
+}

@@ -1,0 +1,128 @@
+<div class="row">
+    <form>
+        <div class="input-group" id="costs-form">
+            <div class="col-md-2 ">
+                    <select class="form-control" ng-model='newCosts.who'>
+                        <option>Участник</option>
+                        <option>Муж</option>
+                        <option>Жена</option>
+                    </select>
+            </div>
+            <div class="col-md-2">
+                <select class="form-control" ng-model='newCosts.from' >
+                    <option disabled>Откуда</option>
+                    <option ng-repeat="key in storageFactory.counts">{{key.title}}</option>
+                    
+                </select>
+            </div>
+            <div class="col-md-2">
+                <select class="form-control" ng-model='newCosts.to'>
+                    <option >Куда</option>
+                    <option ng-repeat="key in storageFactory.ExpenditureCategory">{{key.title}}</option>
+                </select>
+            </div>
+            <div class="col-md-1">
+                <input type="number" placeholder="Сумма" required min='1' class="form-control" ng-model='newCosts.sum'>
+            </div>
+            <div class="col-md-2">
+                <p class="input-group">
+                    <input  type="text" 
+                            class="form-control"
+                            uib-datepicker-popup="yyyy-MM-dd"
+                            ng-model="newCosts.date" is-open="popup.opened" 
+                            datepicker-options="dateOptions"
+                            ng-required="true"
+                            show-button-bar="false" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="openPicker()"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </p>
+            </div>
+            <div class="col-md-2">
+                <input type="text" placeholder="Комментарий" class="form-control" ng-model='newCosts.comment'>
+            </div>
+            <span class="input-group-btn pull-left">
+                <button class="btn btn-success" type="submit" ng-click='addNewCosts()'>Внести</button>
+            </span>
+        </div>
+    </form>
+</div>
+
+<div class="col-md-6">
+    <div class="panel panel-success">
+        <div class="panel-heading clearfix">
+            <h3 class="panel-title">Источники расходов</h3>
+            <div class="pull-right">
+                <button type="button" class="btn btn-success btn-sm" 
+        ng-click="addExpenditureCategory()"><span class="glyphicon glyphicon-plus"></span> Добавить категорию</button>
+            </div>
+        </div>
+        <div class="panel-body">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <span class="category-title">Без категории</span>
+                </li>
+                <li class="list-group-item" ng-repeat='item in storageFactory.ExpenditureCategory'>
+                    <span class="category-title">{{item.title}}</span>
+                    <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-primary btn-xs" title="Редактировать" 
+        ng-click="editExpenditureCategory($index)"><span class="glyphicon glyphicon-pencil"></span></button>
+                        <button type="button" class="btn btn-danger btn-xs" title="Удалить" 
+        ng-click="deleteExpenditureCategory($index)"><span class="glyphicon glyphicon-remove"></span></button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="panel panel-warning">
+        <div class="panel-heading clearfix">
+            <h3 class="panel-title">Шаблоны </h3>
+            <div class="pull-right">
+                <button type="button" class="btn btn-warning btn-sm" 
+        ng-click="addTemplateCosts()"><span class="glyphicon glyphicon-plus"></span> Добавить шаблон</button>
+            </div>
+        </div>
+        <div class="panel-body">
+            <li class="list-group-item" ng-repeat='item in storageFactory.templateCosts'>
+                <span ng-click="addCostsTemplate($index)" class="count-title">{{item.title}}</span>
+                <div class="btn-group pull-right">
+                    <button type="button" class="btn btn-primary btn-xs" title="Редактировать" ng-click="editTemplate()"><span class="glyphicon glyphicon-pencil"></span></button>
+                    <button type="button" class="btn btn-danger btn-xs" title="Удалить" 
+        ng-click="deleteTemplate($index)"><span class="glyphicon glyphicon-remove"></span></button>
+                </div>
+            </li>
+        </div>
+    </div>
+</div>
+<div class="col-md-10 col-md-offset-1">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Последние расходы</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-hover">
+                <thead>
+                    <th>#</th>
+                    <th>Сумма</th>
+                    <th>Откуда/Куда</th>
+                    <th>Кто</th>
+                    <th>Дата</th>
+                    <th>Удалить</th>
+                </thead>
+                <tbody ng-repeat='item in storageFactory.allCosts | limitTo: -3 '>    
+                    <tr>
+                        <td>{{$index+1}}</td>
+                        <td>{{item.sum}}</td>
+                        <td>Из {{item.from}} в {{item.to}}</td>
+                        <td>{{item.who}}</td>
+                        <td>{{item.date| date:'dd-MM-yyyy'}}</td>
+                        <td><button class="btn btn-danger btn-xs" title="Удалить" ng-click='deleteCosts($index)'><span class="glyphicon glyphicon-remove"></span></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="modal-window"></div>
