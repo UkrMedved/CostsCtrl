@@ -4,7 +4,7 @@
           who: '',
           from: '',
           to: '',
-          sum: 1,
+          sum: 0,
           date: '',
           comment:''
         };
@@ -29,11 +29,21 @@
           comment:'',
         }
 
+        $scope.editTemplateModel = {
+                    title: '',
+                    who: '',
+                    from: '',
+                    to: '',
+                    sum: 0,
+                    date: '',
+                    comment:'',
+        }
+
         //независимые копии моделей 
         $scope.newCosts = angular.extend( {}, $scope.costsModel);   
         $scope.newExpenditureCategoryModel = angular.extend( {}, $scope.ExpenditureCategoryModel); 
         $scope.newTemplateModel = angular.extend( {}, $scope.templateModel); 
-
+       
        // добавление даты и календаря в инпут 
         $scope.today = function() {
         $scope.newCosts.date = new Date();
@@ -109,6 +119,7 @@
            $scope.newCosts.date = new Date();
            storageFactory.allCosts.push($scope.newCosts);
            $scope.newCosts = angular.extend( {}, $scope.costsModel);
+           $scope.today();
            
         };
           
@@ -161,7 +172,7 @@
               size: 'lg',
               resolve: {
                 correctCategory: function () {
-                  return $scope.storageFactory.ExpenditureCategory[$index];
+                  return $scope.editNewExpenditureCategory = angular.extend({} , $scope.storageFactory.ExpenditureCategory[$index]) ;
                 }
               },
           });
@@ -179,12 +190,13 @@
             size: 'lg',
             resolve: {
               correctTemplate : function () {
-                return $scope.storageFactory.templateCosts[$index];
+                return $scope.newEditTemplateModel = angular.extend({}, $scope.storageFactory.templateCosts[$index]);
               }
             },
           }); 
           modalEditTemplate.result.then(function(result){
             $scope.storageFactory.templateCosts[$index] = result;
+
           });
         };
 

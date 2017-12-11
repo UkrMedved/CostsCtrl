@@ -1,11 +1,11 @@
 app.controller('editTemplateCtrl', function($scope, $uibModalInstance, storageFactory,correctTemplate) {
-	console.log(correctTemplate);
+	console.log('new', correctTemplate);
 	$scope.storageFactory = storageFactory;
 	$scope.correctTemplate = correctTemplate;
     
 
     $scope.cancel = function() {
-		$uibModalInstance.close();
+		$uibModalInstance.dismiss('cancel');
 
 	};
 

@@ -1,7 +1,7 @@
 app.controller('AddExpenditureCategory', ['$scope', '$uibModalInstance','storageFactory', 'newExpenditureCategoryModel', 
 					function($scope, $uibModalInstance,storageFactory, newExpenditureCategoryModel ) {
 
-    
+    $scope.newExpenditureCategoryModel =newExpenditureCategoryModel;
     $scope.storageFactory = storageFactory;   
     $scope.cancel = function() {
 		$uibModalInstance.close();

@@ -1,23 +1,23 @@
-<div class="row">
+<div class="container">
     <form>
         <div class="input-group" id="costs-form">
             <div class="col-md-2 ">
                     <select class="form-control" ng-model='newCosts.who'>
-                        <option>Участник</option>
+                        <option value='' disabled selected>Участник</option>
                         <option>Муж</option>
                         <option>Жена</option>
                     </select>
             </div>
             <div class="col-md-2">
                 <select class="form-control" ng-model='newCosts.from' >
-                    <option disabled selected='selected'>Откуда</option>
+                    <option value='' disabled selected>Откуда</option>
                     <option ng-repeat="key in storageFactory.income">{{key.title}}</option>
                     
                 </select>
             </div>
             <div class="col-md-2">
                 <select class="form-control" ng-model='newCosts.to'>
-                    <option >Куда</option>
+                    <option value='' disabled selected>Куда</option>
                     <option ng-repeat="key in storageFactory.ExpenditureCategory">{{key.title}}</option>
                 </select>
             </div>
@@ -85,14 +85,16 @@
             </div>
         </div>
         <div class="panel-body">
-            <li class="list-group-item" ng-repeat='item in storageFactory.templateCosts'>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat='item in storageFactory.templateCosts'>
                 <span ng-click="addCostsTemplate($index)" class="count-title">{{item.title}}</span>
                 <div class="btn-group pull-right">
                     <button type="button" class="btn btn-primary btn-xs" title="Редактировать" ng-click="editTemplate($index)"><span class="glyphicon glyphicon-pencil"></span></button>
                     <button type="button" class="btn btn-danger btn-xs" title="Удалить" 
         ng-click="deleteTemplate($index)"><span class="glyphicon glyphicon-remove"></span></button>
                 </div>
-            </li>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
@@ -109,6 +111,7 @@
                     <th>Откуда/Куда</th>
                     <th>Кто</th>
                     <th>Дата</th>
+                    <th>Коментарий</th>
                     <th>Удалить</th>
                 </thead>
                 <tbody ng-repeat='item in storageFactory.allCosts | limitTo: -3 '>    
@@ -118,6 +121,7 @@
                         <td>Из {{item.from}} в {{item.to}}</td>
                         <td>{{item.who}}</td>
                         <td>{{item.date| date:'dd-MM-yyyy'}}</td>
+                        <td>{{item.comment}}</td>
                         <td><button class="btn btn-danger btn-xs" title="Удалить" ng-click='deleteCosts($index)'><span class="glyphicon glyphicon-remove"></span></button></td>
                     </tr>
                 </tbody>
